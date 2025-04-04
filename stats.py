@@ -2,11 +2,9 @@
 
 
 def get_num_words(text):
-
     #splits the words in the file
     word_count = text.split()
-    #Using len, counts the numbAers of words in the document
-    print(f"{len(word_count)} words found in the document")
+    #Using len, counts the numbers of words in the document
     return len(word_count)
 
 def get_num_char(text):
@@ -22,3 +20,21 @@ def get_num_char(text):
         else:
             char_count[char] = 1
     return char_count 
+
+def sort_char(text):
+    # Get the dictionary of characters and their counts
+    char_dict = get_num_char(text)
+    
+    # Create a list of dictionaries
+    char_list = []
+    for char, count in char_dict.items():
+        char_list.append({"char": char, "count": count})
+    
+    # Define a helper function for sorting
+    def sort_on(dict):
+        return dict["count"]
+    
+    # Sort the list from greatest to least by count
+    char_list.sort(reverse=True, key=sort_on)
+    
+    return char_list
